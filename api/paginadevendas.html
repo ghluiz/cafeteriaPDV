@@ -139,56 +139,31 @@
     #nomeUser {
       text-align: center;
     }
-    .titulo{ 
-  position:absolute;
-  bottom: 33%;
-}
-.espresso{
-  position: absolute;
-  left: 8%;
-  border-radius: 2px;
-  bottom: 29%;
-}
-.latte{
-  position: absolute;
-  left: 32.2%;
-  bottom: 29%;
-}
-.cappuccino{
-  position: absolute;
-  left: 54%;
-  bottom: 29%;
-}
-.img4{
-  border-radius:  10px;
-  border: solid var(--castaway-lagoon);
-  width: 300px;
-  height: 300px;
-  position: absolute;
-  left: -56%;
-  bottom: 0,5%;
-  cursor: pointer;
-}
-.img5{
-  border-radius:  10px;
-  border: solid var(--castaway-lagoon);
-  width: 300px;
-  height: 300px;
-  position: absolute;
-  left: -127%;
-  bottom: 0,5%;
-  cursor: pointer;
-}
-.img6{
-  border-radius:  10px;
-  border: solid var(--castaway-lagoon);
-  width: 300px;
-  height: 300px;
-  position: absolute;
-  left: -36%;
-  bottom: 0,5%;
-  cursor: pointer;
-}
+
+    .destaques {
+      margin-top: 100px;
+      padding: 40px 20px;
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+    }
+
+    .destaques h1 {
+      text-align: center;
+      width: 100%;
+    }
+
+    .destaques .produto {
+      text-align: center;
+    }
+
+    .destaques .produto img {
+      border-radius: 10px;
+      border: solid var(--castaway-lagoon);
+      width: 300px;
+      height: 300px;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
@@ -203,47 +178,56 @@
     </div>
   </header>
 
-  <h1 style="margin-left: 20px;">Escolha uma categoria</h1>
+  <main>
+    <h1 style="margin-left: 20px;">Escolha uma categoria</h1>
 
-  <div class="produto-card">
-    <h2>Cafeteria</h2>
-    <a href="cafeteria.html">
-      <img src="https://baggiocafe.com.br/cdn/shop/articles/Tipos_de_graos_de_cafe_1.jpg?v=1708516699&width=600" alt="Cafés">
-    </a>
-  </div>
+    <div class="produto-card">
+      <h2>Cafeteria</h2>
+      <a href="cafeteria.html">
+        <img src="https://baggiocafe.com.br/cdn/shop/articles/Tipos_de_graos_de_cafe_1.jpg?v=1708516699&width=600" alt="Cafés">
+      </a>
+    </div>
 
-  <div class="produto-card">
-    <h2>Biscoitos</h2>
-    <a href="bixcoito.html">
-      <img src="https://applicativa-marketplace-prod.s3.amazonaws.com/biscoitos-bolachas-juntos.jpg" alt="Biscoitos">
-    </a>
-  </div>
+    <div class="produto-card">
+      <h2>Biscoitos</h2>
+      <a href="bixcoito.html">
+        <img src="https://applicativa-marketplace-prod.s3.amazonaws.com/biscoitos-bolachas-juntos.jpg" alt="Biscoitos">
+      </a>
+    </div>
 
-  <div class="produto-card">
-    <h2>Doces</h2>
-    <a href="doce.html">
-      <img src="https://saborecia.com.br/wp-content/uploads/2020/08/MG_4421-scaled.jpg" alt="Doces">
-    </a>
-  </div>
-  <div class="titulo"><h1>Destaques:</h1></div>
+    <div class="produto-card">
+      <h2>Doces</h2>
+      <a href="doce.html">
+        <img src="https://saborecia.com.br/wp-content/uploads/2020/08/MG_4421-scaled.jpg" alt="Doces">
+      </a>
+    </div>
 
-<div class="espresso">
-  <h1>Espresso</h1>
-  <img class="img4 produto" data-id="4"
-       src="https://jardinscafe.com/wp-content/uploads/2017/03/DSC_0373-scaled-e1592316203388-549x549.jpg">
-</div>
+    <section class="destaques">
+      <div class="produto">
+        <h1>Destaques:</h1>
+      </div>
+    </section>
 
-<div class="latte">
-  <h1>Latte</h1>
-  <img class="img5 produto" data-id="5"
-       src="https://images.tcdn.com.br/img/editor/up/840963/Latte_Art_Xicara.jpg">
-</div>
+    <section class="destaques">
+      <div class="produto">
+        <h2>Espresso</h2>
+        <img class="produto" data-id="4" src="https://jardinscafe.com/wp-content/uploads/2017/03/DSC_0373-scaled-e1592316203388-549x549.jpg" />
+      </div>
 
-<div class="cappuccino">
-  <h1>Cappuccino</h1>
-  <img class="img6 produto" data-id="6"
-       src="https://brainfoods.com.br/wp-content/uploads/2020/03/cappuccino.jpg">
-</div>
+      <div class="produto">
+        <h2>Latte</h2>
+        <img class="produto" data-id="5" src="https://images.tcdn.com.br/img/editor/up/840963/Latte_Art_Xicara.jpg" />
+      </div>
+
+      <div class="produto">
+        <h2>Cappuccino</h2>
+        <img class="produto" data-id="6" src="https://brainfoods.com.br/wp-content/uploads/2020/03/cappuccino.jpg" />
+      </div>
+    </section>
+  </main>
+</body>
+</html>
+
   <!-- Sidebar com carrinho -->
   <div class="sidebar">
     <h2 id="nomeUser">Carregando...</h2>
