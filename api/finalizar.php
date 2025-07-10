@@ -103,6 +103,10 @@ $conn->close();
     <p>Seu carrinho está vazio.</p>
   <?php endif; ?>
 </div>
-
+<script>
+  // Redireciona após 3 segundos
+  setTimeout(function() {
+    window.location.href = "vendafinalizada.php";
+  }, 3000); // 3000 milissegundos = 3 segundos
 </body>
 </html>
