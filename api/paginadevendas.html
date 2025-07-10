@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cardápio - Cafeteria</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
   <style>
@@ -49,90 +49,128 @@
       background-color: var(--bread-and-butter);
       color: #607274;
       outline: none;
+      position: absolute;
+      right: 50%;
       font-size: large;
-      width: 200px;
     }
 
-    /* Categorias */
-    .categorias {
+    .sidebar {
+      background-color: #607274;
+      font-family: "Inter", 'sans-serif';
+      color: white;
+      font-size: 15px;
       display: flex;
-      flex-wrap: wrap;
+      flex-direction: column;
+      height: 100%;
+      position: fixed;
+      right: 0;
+      top: 0;
+      border-top-left-radius: 100px;
+      border-bottom-left-radius: 100px;
+      width: 22%;
       justify-content: center;
-      gap: 30px;
       padding: 20px;
-      margin-top: 20px;
-      max-width: 1000px;
-      margin-left: auto;
-      margin-right: auto;
+      box-sizing: border-box;
+    }
+
+    .linha1, .linha2 {
+      border: none;
+      height: 1px;
+      background-color: #FAEED1;
+      margin: 20px 0;
+      width: 100%;
+    }
+
+    #precoProduto {
+      font-size: large;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    #listaProdutos {
+      margin-top: 10px;
+      text-align: center;
+      font-size: large;
+    }
+
+    .continuar {
+      border: none;
+      border-radius: 8px;
+      background-color: #FAEED1;
+      color: #607274;
+      height: 40px;
+      font-size: medium;
+      width: 60%;
+      padding: 5px;
+      cursor: pointer;
+      margin-top: auto;
+      align-self: center;
+      justify-self: center;
+      margin-left: 45px;
+    }
+
+    .btn-mais, .btn-menos {
+      background-color: var(--castaway-lagoon);
+      color: var(--bread-and-butter);
+      border: none;
+      border-radius: 4px;
+      padding: 4px 10px;
+      font-size: large;
+      cursor: pointer;
+      transition: 0.2s ease;
     }
 
     .produto-card {
+      display: inline-block;
       width: 300px;
+      margin: 30px;
+      vertical-align: top;
       text-align: center;
-      cursor: pointer;
-      transition: transform 0.2s ease;
     }
-    .produto-card:hover {
-      transform: scale(1.05);
-    }
-    .produto-card h2 {
-      margin-bottom: 10px;
-      color: var(--castaway-lagoon);
-    }
+
     .produto-card img {
-      width: 300px;
+      width: 100%;
       height: 300px;
       object-fit: cover;
       border-radius: 10px;
       border: 2px solid var(--castaway-lagoon);
-    }
-
-    /* Destaques */
-    .destaques-container {
-      display: flex;
-      align-items: center; /* alinha título verticalmente no meio das imagens */
-      gap: 30px;
-      max-width: 1000px;
-      margin: 40px auto 60px auto;
-      padding: 0 20px;
-    }
-
-    .titulo-destaques {
-      font-size: 32px;
-      color: var(--castaway-lagoon);
-      margin: 0;
-      white-space: nowrap; /* para não quebrar linha */
-      flex-shrink: 0; /* não encolhe */
-    }
-
-    .produtos-destaques {
-      display: flex;
-      gap: 30px;
-      flex-wrap: nowrap; /* evita quebra de linha */
-      overflow-x: auto; /* permite rolagem horizontal se necessário */
-    }
-
-    .produto {
-      width: 300px;
-      text-align: center;
       cursor: pointer;
-      transition: transform 0.2s ease;
-      flex-shrink: 0; /* evita encolhimento para manter tamanho */
     }
-    .produto:hover {
-      transform: scale(1.05);
+
+    #nomeUser {
+      text-align: center;
     }
-    .produto h2 {
-      margin-bottom: 15px;
+
+    /* Ajuste da seção destaques */
+    .destaques {
+      margin-top: 50px;
+      padding: 40px 20px;
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+      flex-wrap: wrap;
+      box-sizing: border-box;
+    }
+
+    .destaques h1 {
+      text-align: center;
+      width: 100%;
+      margin-bottom: 20px;
       color: var(--castaway-lagoon);
     }
 
-    .imagem-produto {
-      width: 300px;
-      height: 300px;
-      object-fit: cover;
+    .destaques .produto {
+      text-align: center;
+      max-width: 300px;
+    }
+
+    .destaques .produto img {
       border-radius: 10px;
       border: 2px solid var(--castaway-lagoon);
+      width: 300px;
+      height: 300px;
+      cursor: pointer;
+      object-fit: cover;
     }
   </style>
 </head>
@@ -148,50 +186,49 @@
     </div>
   </header>
 
-  <h1 style="margin-left: 20px;">Escolha uma categoria</h1>
+  <main style="margin-right: 22%;">
+    <h1 style="margin-left: 20px;">Escolha uma categoria</h1>
 
-  <section class="categorias">
     <div class="produto-card">
       <h2>Cafeteria</h2>
       <a href="cafeteria.html">
-        <img src="https://baggiocafe.com.br/cdn/shop/articles/Tipos_de_graos_de_cafe_1.jpg?v=1708516699&width=600" alt="Cafés">
+        <img src="https://baggiocafe.com.br/cdn/shop/articles/Tipos_de_graos_de_cafe_1.jpg?v=1708516699&width=600" alt="Cafés" />
       </a>
     </div>
 
     <div class="produto-card">
       <h2>Biscoitos</h2>
       <a href="bixcoito.html">
-        <img src="https://applicativa-marketplace-prod.s3.amazonaws.com/biscoitos-bolachas-juntos.jpg" alt="Biscoitos">
+        <img src="https://applicativa-marketplace-prod.s3.amazonaws.com/biscoitos-bolachas-juntos.jpg" alt="Biscoitos" />
       </a>
     </div>
 
     <div class="produto-card">
       <h2>Doces</h2>
       <a href="doce.html">
-        <img src="https://saborecia.com.br/wp-content/uploads/2020/08/MG_4421-scaled.jpg" alt="Doces">
+        <img src="https://saborecia.com.br/wp-content/uploads/2020/08/MG_4421-scaled.jpg" alt="Doces" />
       </a>
     </div>
-  </section>
 
-  <section class="destaques-container">
-    <h1 class="titulo-destaques">Destaques</h1>
-    <div class="produtos-destaques">
+    <section class="destaques">
+      <h1>Destaques:</h1>
+      
       <div class="produto">
         <h2>Espresso</h2>
-        <img class="imagem-produto" data-id="4" src="https://jardinscafe.com/wp-content/uploads/2017/03/DSC_0373-scaled-e1592316203388-549x549.jpg" alt="Espresso">
+        <img class="produto" data-id="4" src="https://jardinscafe.com/wp-content/uploads/2017/03/DSC_0373-scaled-e1592316203388-549x549.jpg" />
       </div>
+
       <div class="produto">
         <h2>Latte</h2>
-        <img class="imagem-produto" data-id="5" src="https://images.tcdn.com.br/img/editor/up/840963/Latte_Art_Xicara.jpg" alt="Latte">
+        <img class="produto" data-id="5" src="https://images.tcdn.com.br/img/editor/up/840963/Latte_Art_Xicara.jpg" />
       </div>
+
       <div class="produto">
         <h2>Cappuccino</h2>
-        <img class="imagem-produto" data-id="6" src="https://brainfoods.com.br/wp-content/uploads/2020/03/cappuccino.jpg" alt="Cappuccino">
+        <img class="produto" data-id="6" src="https://brainfoods.com.br/wp-content/uploads/2020/03/cappuccino.jpg" />
       </div>
-    </div>
-  </section>
-</body>
-</html>
+    </section>
+  </main>
 
   <!-- Sidebar com carrinho -->
   <div class="sidebar">
@@ -201,9 +238,9 @@
     <div class="linha2"></div>
     <h3 id="precoProduto">Total: R$ 0,00</h3>
 
-    <form id="formFinalizar" action="finalizar.php" method="POST">
-      <input type="hidden" name="nome" id="inputProdutos">
-      <input type="hidden" name="total" id="inputTotal">
+    <form id="formFinalizar" action="fig11.php" method="POST">
+      <input type="hidden" name="nome" id="inputProdutos" />
+      <input type="hidden" name="total" id="inputTotal" />
       <button type="submit" class="continuar">CONTINUAR</button>
     </form>
   </div>
