@@ -140,13 +140,17 @@
       text-align: center;
     }
 
-    .destaques {
-  margin-top: 80px;
+   .destaques {
+  margin-top: 60px; /* Espaço depois das categorias */
   padding: 20px;
+  background-color: var(--bread-and-butter);
 }
 
-.destaques h1 {
-  text-align: center;
+.destaques-titulo {
+  text-align: left;
+  margin-left: 20px;
+  color: var(--castaway-lagoon);
+  font-size: 26px;
   margin-bottom: 20px;
 }
 
@@ -159,13 +163,13 @@
 }
 
 .produto-destaque {
-  width: 300px;
+  width: 280px;
   text-align: center;
 }
 
 .produto-destaque img {
   width: 100%;
-  height: 300px;
+  height: 280px;
   object-fit: cover;
   border-radius: 10px;
   border: 2px solid var(--castaway-lagoon);
@@ -208,21 +212,26 @@
         <img src="https://saborecia.com.br/wp-content/uploads/2020/08/MG_4421-scaled.jpg" alt="Doces">
       </a>
     </div>
-
-   <section class="destaques">
-  <h1>Destaques:</h1>
+<section class="destaques">
+  <h1 class="destaques-titulo">Destaques</h1>
   <div class="destaques-container">
     <div class="produto-destaque">
       <h2>Espresso</h2>
-      <img class="produto" data-id="4" src="https://jardinscafe.com/wp-content/uploads/2017/03/DSC_0373-scaled-e1592316203388-549x549.jpg">
+      <img class="produto" data-id="4"
+        src="https://jardinscafe.com/wp-content/uploads/2017/03/DSC_0373-scaled-e1592316203388-549x549.jpg"
+        alt="Espresso">
     </div>
     <div class="produto-destaque">
       <h2>Latte</h2>
-      <img class="produto" data-id="5" src="https://images.tcdn.com.br/img/editor/up/840963/Latte_Art_Xicara.jpg">
+      <img class="produto" data-id="5"
+        src="https://images.tcdn.com.br/img/editor/up/840963/Latte_Art_Xicara.jpg"
+        alt="Latte">
     </div>
     <div class="produto-destaque">
       <h2>Cappuccino</h2>
-      <img class="produto" data-id="6" src="https://brainfoods.com.br/wp-content/uploads/2020/03/cappuccino.jpg">
+      <img class="produto" data-id="6"
+        src="https://brainfoods.com.br/wp-content/uploads/2020/03/cappuccino.jpg"
+        alt="Cappuccino">
     </div>
   </div>
 </section>
