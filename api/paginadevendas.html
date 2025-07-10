@@ -53,24 +53,23 @@
       right: 50%;
       font-size: large;
     }
-
-    .sidebar {
-      background-color: #607274;
-      font-family: "inter", 'sans-serif';
-      color: white;
-      font-size: 15px;
-      display: flex;
-      flex-direction: column;
-      height: 100%;
+.sidebar {
       position: fixed;
-      right: 0;
       top: 0;
+      right: 0;
+      width: 30%;
+      height: 100vh;
+      background-color: var(--castaway-lagoon);
+      color: #FFF;
       border-top-left-radius: 100px;
       border-bottom-left-radius: 100px;
-      width: 22%;
-      justify-content: center;
-      padding: 20px;
+      padding: 40px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
     }
+
     .linha1 {
       border: none;
       height: 1px;
@@ -151,9 +150,10 @@
 
     #nomeUser {
       text-align: center;
+      top: 75%;
     }
 
-    .destaques {
+  .destaques {
    margin-top: 10px;            /* controla distância vertical */
   padding-right: 20px;         /* opcional: espaço da direita */
   display: flex;
