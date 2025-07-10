@@ -139,6 +139,56 @@
     #nomeUser {
       text-align: center;
     }
+    .titulo{ 
+  position:absolute;
+  bottom: 33%;
+}
+.espresso{
+  position: absolute;
+  left: 8%;
+  border-radius: 2px;
+  bottom: 29%;
+}
+.latte{
+  position: absolute;
+  left: 32.2%;
+  bottom: 29%;
+}
+.cappuccino{
+  position: absolute;
+  left: 54%;
+  bottom: 29%;
+}
+.img4{
+  border-radius:  10px;
+  border: solid var(--castaway-lagoon);
+  width: 300px;
+  height: 300px;
+  position: absolute;
+  left: -56%;
+  bottom: 0,5%;
+  cursor: pointer;
+}
+.img5{
+  border-radius:  10px;
+  border: solid var(--castaway-lagoon);
+  width: 300px;
+  height: 300px;
+  position: absolute;
+  left: -127%;
+  bottom: 0,5%;
+  cursor: pointer;
+}
+.img6{
+  border-radius:  10px;
+  border: solid var(--castaway-lagoon);
+  width: 300px;
+  height: 300px;
+  position: absolute;
+  left: -36%;
+  bottom: 0,5%;
+  cursor: pointer;
+}
   </style>
 </head>
 <body>
@@ -175,7 +225,25 @@
       <img src="https://saborecia.com.br/wp-content/uploads/2020/08/MG_4421-scaled.jpg" alt="Doces">
     </a>
   </div>
+  <div class="titulo"><h1>Destaques:</h1></div>
 
+<div class="espresso">
+  <h1>Espresso</h1>
+  <img class="img4 produto" data-id="4"
+       src="https://jardinscafe.com/wp-content/uploads/2017/03/DSC_0373-scaled-e1592316203388-549x549.jpg">
+</div>
+
+<div class="latte">
+  <h1>Latte</h1>
+  <img class="img5 produto" data-id="5"
+       src="https://images.tcdn.com.br/img/editor/up/840963/Latte_Art_Xicara.jpg">
+</div>
+
+<div class="cappuccino">
+  <h1>Cappuccino</h1>
+  <img class="img6 produto" data-id="6"
+       src="https://brainfoods.com.br/wp-content/uploads/2020/03/cappuccino.jpg">
+</div>
   <!-- Sidebar com carrinho -->
   <div class="sidebar">
     <h2 id="nomeUser">Carregando...</h2>
