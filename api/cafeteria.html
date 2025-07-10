@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Cafeteria</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --spanish-white: #DED0B6;
+      --castaway-lagoon: #607274;
+      --bread-and-butter: #FAEED1;
+      --deer-run: #B2A59B;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bread-and-butter);
+      color: var(--castaway-lagoon);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* Container geral que abriga conteúdo + sidebar */
+    .container {
+      flex: 1;
+      padding: 40px 20px 60px 20px;
+      margin-right: 22%; /* espaço para sidebar */
+      box-sizing: border-box;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-weight: 700;
+    }
+
+    /* Grid flexível para produtos */
+    .cafes {
+      display: flex;
+      justify-content: space-evenly;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .cafe {
+      width: 300px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .cafe h2 {
+      font-size: 20px;
+      margin-bottom: 14px;
+      color: var(--castaway-lagoon);
+    }
+
+    .cafe img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 10px;
+      border: 2px solid var(--castaway-lagoon);
+      cursor: pointer;
+      box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s ease;
+    }
+
+    .cafe img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Sidebar fixa à direita */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 22%;
+      height: 100vh;
+      background-color: var(--castaway-lagoon);
+      color: white;
+      padding: 20px 30px;
+      border-top-left-radius: 60px;
+      border-bottom-left-radius: 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-sizing: border-box;
+      overflow-y: auto;
+    }
+
+    .sidebar h2, .sidebar h3 {
+      margin: 0 0 10px 0;
+    }
+
+    .sidebar hr {
+      width: 100%;
+      border: none;
+      height: 1px;
+      background-color: var(--bread-and-butter);
+      margin: 15px 0;
+    }
+
+    #listaProdutos {
+      width: 100%;
+      flex-grow: 1;
+      overflow-y: auto;
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
+
+    /* Itens do carrinho com botões */
+    .item-linha {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+      gap: 10px;
+    }
+
+    .item-linha strong {
+      flex-grow: 1;
+      text-align: left;
+    }
+
+    .btn-mais, .btn-menos {
+      background-color: var(--bread-and-butter);
+      color: var(--castaway-lagoon);
+      border: none;
+      border-radius: 4px;
+      padding: 4px 10px;
+      font-size: 18px;
+      cursor: pointer;
+      user-select: none;
+      transition: background-color 0.2s ease;
+    }
+
+    .btn-mais:hover, .btn-menos:hover {
+      background-color: #d9d2b0;
+    }
+
+    /* Total e botão continuar */
+    #precoProduto {
+      font-weight: bold;
+      font-size: 18px;
+      margin-bottom: 20px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .continuar {
+      background-color: var(--bread-and-butter);
+      color: var(--castaway-lagoon);
+      border: none;
+      padding: 12px 20px;
+      cursor: pointer;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 16px;
+      width: 100%;
+      transition: background-color 0.3s ease;
+    }
+
+    .continuar:hover {
+      background-color: #d9d2b0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Cafeteria</h1>
+
+    <div class="cafes">
+      <div class="cafe">
+        <h2>Café Coado</h2>
+        <img class="produto-img" data-id="1" src="https://historico.mokaclube.com.br/wp-content/uploads/2018/12/kit-hario-v60-foto1.jpg" alt="Café Coado" />
+      </div>
+      <div class="cafe">
+        <h2>Mocha</h2>
+        <a href="fig.php">
+          <img class="produto-img" data-id="2" src="https://i.pinimg.com/736x/f5/53/41/f5534114bffdf3940089387a434add37.jpg" alt="Mocha" />
+        </a>
+      </div>
+      <div class="cafe">
+        <h2>Lungo</h2>
+        <img class="produto-img" data-id="3" src="https://cafemotriz.com.br/wp-content/uploads/2025/02/imagem-destacada-cafe-lungo.jpg" alt="Lungo" />
+      </div>
+      <div class="cafe">
+        <h2>Espresso</h2>
+        <img class="produto-img" data-id="4" src="https://jardinscafe.com/wp-content/uploads/2017/03/DSC_0373-scaled-e1592316203388-549x549.jpg" alt="Espresso" />
+      </div>
+      <div class="cafe">
+        <h2>Latte</h2>
+        <img class="produto-img" data-id="5" src="https://images.tcdn.com.br/img/editor/up/840963/Latte_Art_Xicara.jpg" alt="Latte" />
+      </div>
+      <div class="cafe">
+        <h2>Cappuccino</h2>
+        <img class="produto-img" data-id="6" src="https://brainfoods.com.br/wp-content/uploads/2020/03/cappuccino.jpg" alt="Cappuccino" />
+      </div>
+    </div>
+  </div>
+
+  <div class="sidebar">
+    <h2 id="nomeUser">Carregando...</h2>
+    <hr />
+    <div id="listaProdutos"></div>
+    <hr />
+    <h3 id="precoProduto">Total: R$ 0,00</h3>
+
+    <form id="formFinalizar" action="fig11.php" method="POST">
+      <input type="hidden" name="produtos" id="inputProdutos" />
+      <input type="hidden" name="total" id="inputTotal" />
+      <button class="continuar" type="submit">CONTINUAR</button>
+    </form>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Função para carregar o carrinho da sessão via API PHP
+      function carregarCarrinho() {
+        return fetch('carrinho.php?acao=listar')
+          .then(res => res.json())
+          .then(data => data.carrinho || {})
+          .catch(() => ({}));
+      }
+
+      let cart = {};
+
+      // Pega o nome do usuário
+      fetch("get_user.php")
+        .then(res => res.json())
+        .then(data => {
+          document.getElementById("nomeUser").textContent = data.nome || "Visitante";
+        })
+        .catch(() => {
+          document.getElementById("nomeUser").textContent = "Visitante";
+        });
+
+      const lista = document.getElementById('listaProdutos');
+      const totalEl = document.getElementById('precoProduto');
+
+      function atualizarSidebar() {
+        lista.innerHTML = '';
+        let total = 0;
+
+        Object.entries(cart).forEach(([id, item]) => {
+          const subtotal = item.qty * item.preco;
+          total += subtotal;
+
+          lista.insertAdjacentHTML('beforeend', `
+            <div class="item-linha">
+              <button class="btn-menos" onclick="alterarQuantidade('${id}', -1)">−</button>
+              <strong>${item.nome}</strong> × ${item.qty} – R$ ${subtotal.toFixed(2).replace('.', ',')}
+              <button class="btn-mais" onclick="alterarQuantidade('${id}', 1)">+</button>
+            </div>
+          `);
+        });
+
+        totalEl.textContent = `Total: R$ ${total.toFixed(2).replace('.', ',')}`;
+
+        // Atualiza inputs do formulário para envio
+        document.getElementById('inputProdutos').value = Object.values(cart).map(it => `${it.nome} x${it.qty}`).join(', ');
+        document.getElementById('inputTotal').value = total.toFixed(2);
+      }
+
+      // Função global para alterar quantidade no carrinho
+      window.alterarQuantidade = function (id, delta) {
+        fetch(`carrinho.php?acao=alterar&id=${encodeURIComponent(id)}&delta=${delta}`)
+          .then(res => res.json())
+          .then(data => {
+            cart = data.carrinho || {};
+            atualizarSidebar();
+          })
+          .catch(console.error);
+      };
+
+      // Ao clicar no produto, adiciona ao carrinho
+      document.querySelectorAll('.produto-img').forEach(el => {
+        el.addEventListener('click', () => {
+          const id = el.getAttribute('data-id');
+
+          fetch(`get_produto.php?id=${id}`)
+            .then(res => res.json())
+            .then(prod => {
+              const formData = new FormData();
+              formData.append('id', id);
+              formData.append('nome', prod.nome);
+              formData.append('preco', prod.preco_base || prod.preco);
+
+              fetch('carrinho.php?acao=adicionar', {
+                method: 'POST',
+                body: formData
+              })
+              .then(res => res.json())
+              .then(data => {
+                cart = data.carrinho || {};
+                atualizarSidebar();
+              })
+              .catch(console.error);
+            })
+            .catch(console.error);
+        });
+      });
+
+      // Inicializa o carrinho ao carregar a página
+      carregarCarrinho().then(carrinhoDaSessao => {
+        cart = carrinhoDaSessao;
+        atualizarSidebar();
+      });
+    });
+  </script>
+</body>
+</html>

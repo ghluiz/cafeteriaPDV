@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="paginacadastroeloginstyle.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>PaginadeLogineCadastro</title>
+  </head>
+
+  <body>
+    <div class="container" id="container">
+      <div class="form-container sign-up">
+        <!-- parte de cadastro -->
+        <form method="post" action="cadastro.php" id="userFormulario">
+          <h1 class="textoEntCad">Cadastrar-se</h1>
+          <input class="cadastroInputs" type="text" id="userNome" name="userNome" placeholder="Nome" />
+          <input class="cadastroInputs" type="text" id="userCPF" name="userCPF" placeholder="CPF"   />
+          <input class="cadastroInputs" type="password" id="userSenha" name="userSenha" placeholder="Senha" />
+          <input class="cadastroInputs" type="password" id="userSenhaCon" name="userSenhaCon"  placeholder="Confirmar Senha" />
+          <input type="submit" id="submitcad"  value="inscrever">
+        </form>
+      
+
+
+      <!-- parte de login -->
+      </div>
+      <div class="form-container sign-in">
+        <form method="post" action="login.php">
+          <h1 class="textoEntCad">Entrar</h1>
+          <input type="CPF" id="CPFLog" name="CPFLog" placeholder="CPF" />
+          <input type="password" id="senhaLog" name="senhaLog" placeholder="Senha" />
+          <input class="enviar" id="submit" type="submit" placeholder="entrar">
+        </form>
+      </div>
+
+
+      <div class="toggle-container">
+        <div class="toggle">
+          <div class="toggle-panel toggle-left">
+            <h1>Bem Vindo de volta!</h1>
+            <p>Caso já possua cadastro, insira seus dados após clicar no botão abaixo</p>
+            <button class="hidden" id="login">Entrar</button>
+          </div>
+          <div class="toggle-panel toggle-right">
+            <h1>Novo Funcionário?</h1>
+            <p>
+              Caso não possua cadastro, insira seus dados após clicar no botão abaixo!
+            </p>
+            <button class="hidden" id="register">Criar conta</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="paginacadastroeloginscript.js"></script>
+  </body>
+</html>

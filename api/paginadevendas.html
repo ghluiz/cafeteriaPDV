@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cardápio - Cafeteria</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --spanish-white: #DED0B6;
+      --castaway-lagoon: #607274;
+      --bread-and-butter: #FAEED1;
+      --deer-run: #B2A59B;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bread-and-butter);
+      font-size: medium;
+      color: var(--castaway-lagoon);
+      margin: 0;
+      padding: 0;
+    }
+
+    .menu {
+      background-color: var(--deer-run);
+      padding: 6px;
+    }
+
+    .top-bar {
+      display: flex;
+      align-items: center;
+    }
+
+    .back-btn {
+      font-size: 60px;
+      background: none;
+      color: #FAEED1;
+      border: none;
+      margin-right: 10px;
+      border-radius: 50px;
+      cursor: pointer;
+    }
+
+    .search input {
+      padding: 8px 12px;
+      border: none;
+      border-radius: 8px;
+      background-color: var(--bread-and-butter);
+      color: #607274;
+      outline: none;
+      position: absolute;
+      right: 50%;
+      font-size: large;
+    }
+
+    .sidebar {
+      background-color: #607274;
+      font-family: "inter", 'sans-serif';
+      color: white;
+      font-size: 15px;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      position: fixed;
+      right: 0;
+      top: 0;
+      border-top-left-radius: 100px;
+      border-bottom-left-radius: 100px;
+      width: 22%;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .linha1, .linha2 {
+      border: none;
+      height: 1px;
+      background-color: #FAEED1;
+      margin: 20px 0;
+      width: 100%;
+    }
+
+    #precoProduto {
+      font-size: large;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    #listaProdutos {
+      margin-top: 10px;
+      text-align: center;
+      font-size: large;
+    }
+
+    .continuar {
+      border: none;
+      border-radius: 8px;
+      background-color: #FAEED1;
+      color: #607274;
+      height: 40px;
+      font-size: medium;
+      width: 60%;
+      padding: 5px;
+      cursor: pointer;
+      margin-top: auto;
+      align-self: center;
+      justify-self: center;
+      margin-left: 45px;
+    }
+
+    .btn-mais, .btn-menos {
+      background-color: var(--castaway-lagoon);
+      color: var(--bread-and-butter);
+      border: none;
+      border-radius: 4px;
+      padding: 4px 10px;
+      font-size: large;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .produto-card {
+      display: inline-block;
+      width: 300px;
+      margin: 30px;
+      vertical-align: top;
+      text-align: center;
+    }
+
+    .produto-card img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 10px;
+      border: 2px solid var(--castaway-lagoon);
+      cursor: pointer;
+    }
+
+    #nomeUser {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="menu">
+      <div class="top-bar">
+        <button class="back-btn" onclick="history.back()">&#8592;</button>
+        <div class="search">
+          <input type="search" placeholder="Pesquisar" />
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <h1 style="margin-left: 20px;">Escolha uma categoria</h1>
+
+  <div class="produto-card">
+    <h2>Cafeteria</h2>
+    <a href="cafeteria.html">
+      <img src="https://baggiocafe.com.br/cdn/shop/articles/Tipos_de_graos_de_cafe_1.jpg?v=1708516699&width=600" alt="Cafés">
+    </a>
+  </div>
+
+  <div class="produto-card">
+    <h2>Biscoitos</h2>
+    <a href="bixcoito.html">
+      <img src="https://applicativa-marketplace-prod.s3.amazonaws.com/biscoitos-bolachas-juntos.jpg" alt="Biscoitos">
+    </a>
+  </div>
+
+  <div class="produto-card">
+    <h2>Doces</h2>
+    <a href="doce.html">
+      <img src="https://saborecia.com.br/wp-content/uploads/2020/08/MG_4421-scaled.jpg" alt="Doces">
+    </a>
+  </div>
+
+  <!-- Sidebar com carrinho -->
+  <div class="sidebar">
+    <h2 id="nomeUser">Carregando...</h2>
+    <div class="linha1"></div>
+    <div id="listaProdutos">Seu carrinho está vazio.</div>
+    <div class="linha2"></div>
+    <h3 id="precoProduto">Total: R$ 0,00</h3>
+
+    <form id="formFinalizar" action="finalizar.php" method="POST">
+      <input type="hidden" name="nome" id="inputProdutos">
+      <input type="hidden" name="total" id="inputTotal">
+      <button type="submit" class="continuar">CONTINUAR</button>
+    </form>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      function carregarCarrinho() {
+        return fetch('carrinho.php?acao=listar')
+          .then(res => res.json())
+          .then(data => data.carrinho || {})
+          .catch(() => ({}));
+      }
+
+      let cart = {};
+
+      fetch("get_user.php")
+        .then(res => res.json())
+        .then(data => {
+          document.getElementById("nomeUser").textContent = data.nome || "Visitante";
+        })
+        .catch(() => {
+          document.getElementById("nomeUser").textContent = "Visitante";
+        });
+
+      const lista = document.getElementById('listaProdutos');
+      const totalEl = document.getElementById('precoProduto');
+
+      function atualizarSidebar() {
+        lista.innerHTML = '';
+        let total = 0;
+
+        Object.entries(cart).forEach(([id, item]) => {
+          const subtotal = item.qty * item.preco;
+          total += subtotal;
+
+          lista.insertAdjacentHTML('beforeend', `
+            <div class="item-linha">
+              <button class="btn-menos" onclick="alterarQuantidade('${id}', -1)">−</button>
+              <strong>${item.nome}</strong> × ${item.qty} – R$ ${subtotal.toFixed(2).replace('.', ',')}
+              <button class="btn-mais" onclick="alterarQuantidade('${id}', 1)">+</button>
+            </div>
+          `);
+        });
+
+        totalEl.textContent = `Total: R$ ${total.toFixed(2).replace('.', ',')}`;
+        document.getElementById('inputProdutos').value = Object.values(cart).map(it => `${it.nome} x${it.qty}`).join(', ');
+        document.getElementById('inputTotal').value = total.toFixed(2);
+      }
+
+      window.alterarQuantidade = function (id, delta) {
+        fetch(`carrinho.php?acao=alterar&id=${encodeURIComponent(id)}&delta=${delta}`)
+          .then(res => res.json())
+          .then(data => {
+            cart = data.carrinho || {};
+            atualizarSidebar();
+          });
+      };
+
+      carregarCarrinho().then(c => {
+        cart = c;
+        atualizarSidebar();
+      });
+    });
+  </script>
+</body>
+</html>

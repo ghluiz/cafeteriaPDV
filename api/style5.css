@@ -1,0 +1,26 @@
+:root {
+    --spanish-white: #DED0B6;
+    --castaway-lagoon: #607274;
+    --bread-and-butter: #FAEED1;
+    --deer-run: #B2A59B;
+  }
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--castaway-lagoon);
+    font-size: 50px;
+    color: var(--bread-and-butter); 
+    text-align: center;
+    
+   }
+.back-btn {
+    font-size: 50px;
+    background: none;
+    color: #FAEED1;
+    border: none;
+    margin-right: 10px;
+    border-radius: 50px;
+    cursor: pointer;
+  }
+  .apohadaseta{
+    text-align: left;
+  }

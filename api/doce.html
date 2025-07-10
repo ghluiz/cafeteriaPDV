@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <!-- Configuração da codificação de caracteres e responsividade -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cafeteria</title>
+
+  <!-- Fonte do Google -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
+
+  <style>
+    /* Paleta de cores como variáveis CSS */
+    :root {
+        --spanish-white: #DED0B6;
+        --castaway-lagoon: #607274;
+        --bread-and-butter: #FAEED1;
+        --deer-run: #B2A59B;
+    }
+
+    body {
+        font-family: 'Inter', sans-serif;
+        background-color: var(--bread-and-butter);
+        font-size: medium;
+        color: var(--castaway-lagoon);
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    .menu {
+        display: block;
+        background-color:var(--deer-run);
+        padding: 6px;
+    }
+
+    .top-bar {
+        display: flex;
+        align-items: center;
+        margin-bottom: 6px;
+        flex-direction: row ;
+    }
+
+    .back-btn {
+        font-size: 60px;
+        background: none;
+        color: #FAEED1;
+        border: none;
+        margin-right: 10px;
+        border-radius: 50px;
+        cursor: pointer;
+    }
+
+    .search input {
+        padding: 8px 12px;
+        border: none;
+        border-radius: 8px;
+        background-color: var(--bread-and-butter);
+        color: #607274;
+        outline: none;
+        position: absolute;
+        right: 50% ;
+        font-size: large;
+    }
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .display {
+        background-image: url(https://png.pngtree.com/background/20210715/original/pngtree-sweet-chocolate-sauce-background-picture-image_1276466.jpg) ;
+        font-size: large;
+        padding-bottom: 25px;
+        padding-top: 25px;
+    }
+
+    .btn-mais, .btn-menos {
+        background-color:var(--castaway-lagoon);
+        color: var(--bread-and-butter);
+        border: none;
+        border-radius: 4px;
+        padding: 4px 10px;
+        font-size: large;
+        cursor: pointer;
+        transition: 0.2s ease;
+    }
+
+    .pngzinho {
+        position: absolute;
+        right: 650px;
+        top: 89px;
+    }
+
+    #nomeUser {
+        position: absolute;
+        top: 0%;
+    }
+
+    .sidebar {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 22%; /* Mantido seu ajuste */
+        height: 92vh;
+        background-color: var(--castaway-lagoon);
+        color: #FFF;
+        border-top-left-radius: 100px;
+        border-bottom-left-radius: 100px;
+        padding: 40px 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .linha1 {
+        border: none;
+        height: 1px;
+        background-color: #FAEED1;
+        margin: 20px ;
+        width: 100%;
+        top: 7%;
+        position: absolute;
+    }
+
+    .linha2 {
+        border: none;
+        height: 1px;
+        background-color: #FAEED1;
+        margin: 20px ;
+        width: 104.3% ;
+        top: 70%;
+        left: -8%;
+        position: absolute;
+    }
+
+    #listaProdutos {
+        margin-top: 10px;
+        text-align: center;
+        width: 100%;
+        position: absolute;
+        top: 10%;
+        font-size: large;
+    }
+
+    #precoProduto {
+        font-size: large;
+        font-weight: bold;
+        margin-top: 10px;
+        position: absolute;
+        bottom: 20%;
+        left: 10%;
+    }
+
+    .continuar {
+        border: none;
+        border-radius: 8px;
+        background-color: #FAEED1;
+        color: #607274;
+        height: 40px;
+        font-size: medium;
+        /* Removi text-shadow estranho */
+        width: 60%;
+        position: absolute;
+        top: 85%;
+        right: 100px;
+        padding: 5px;
+        cursor: pointer;
+    }
+
+  .Doces {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  padding: 40px 20px 60px 20px;
+  margin-right: 24%; /* Deixa espaço pra sidebar */
+  box-sizing: border-box;
+}
+
+.doce{
+  width: 320px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.doce h2 {
+  font-size: 20px;
+  margin-bottom: 14px;
+  color: var(--castaway-lagoon);
+}
+
+.doce img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 2px solid var(--castaway-lagoon);
+  cursor: pointer;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+}
+  </style>
+</head>
+<body>
+<header>
+  
+    <div class="menu">
+      <div class="top-bar">
+        <!-- Botão de voltar -->
+        <a href="paginadevendas.html"> <!-- Mantido link relativo do colega -->
+          <button class="back-btn">&#8592;</button>
+        </a>
+
+        <!-- Barra de pesquisa -->
+        <div class="search">
+          <input type="search" id="searchbar" placeholder="Pesquisar" onclick="fltrarlista">
+        
+        <!-- Início da barra lateral (carrinho) -->
+        <div class="sidebar">
+          <h1 id="nomeUser">Carregando...</h1>
+
+          <hr class="linha1" />
+          <div id="listaProdutos"></div>
+          <hr class="linha2" />
+          <h3 id="precoProduto">Total: R$ 0,00</h3>
+
+          <!-- Formulário para finalizar pedido -->
+          <form id="formFinalizar" action="finalizar.php" method="POST">
+            <input type="hidden" name="produtos" id="inputProdutos">
+            <input type="hidden" name="total" id="inputTotal">
+            <button class="continuar" type="submit">CONTINUAR</button>
+          </form>
+        </div>
+</header>
+
+<!-- Faixa com imagem de fundo -->
+<div class="display">
+  <h1>Doces</h1>
+</div>
+
+<!-- Imagem decorativa -->
+<div class="pngzinho">
+  <img src="https://i.pinimg.com/originals/34/6f/06/346f064b0e78c3025acced62039a3417.png" alt="pngzinho" width="140px">
+</div>
+<div class="Doces">
+  <!-- Produto 1 -->
+  <div class="doce">
+    <h2>Sonho</h2>
+    <img class="produto" data-id="10" src="https://claudia.abril.com.br/wp-content/uploads/2020/02/receita-sonho-doce-1.jpg" alt="droga">
+  </div>
+
+  <!-- Produto 2 -->
+  <div class="doce">
+    <h2>Bomba de chocolate</h2>
+    <img class="produto" data-id="11" src="https://www.receiteria.com.br/wp-content/uploads/bomba-de-chocolate-capa.jpg" alt="biscrock">
+  </div>
+
+  <!-- Produto 3 -->
+  <div class="doce">
+    <h2>Pão de mel</h2>
+    <img class="produto" data-id="12" src="https://i.ytimg.com/vi/zQKBeKweEVE/maxresdefault.jpg" alt="candy">
+  </div>
+</div>
+
+<script>
+ document.addEventListener('DOMContentLoaded', () => {
+  // Carrega o carrinho da sessão via PHP (listar)
+  function carregarCarrinho() {
+    return fetch('carrinho.php?acao=listar')
+      .then(res => res.json())
+      .then(data => data.carrinho || {})
+      .catch(() => ({}));
+  }
+
+  let cart = {};
+
+  fetch("get_user.php")
+    .then(res => res.json())
+    .then(data => {
+      const h1 = document.getElementById("nomeUser");
+      h1.textContent = data.nome || "Visitante";
+    })
+    .catch(() => {
+      document.getElementById("nomeUser").textContent = "Visitante";
+    });
+
+  const lista   = document.getElementById('listaProdutos');
+  const totalEl = document.getElementById('precoProduto');
+
+  function atualizarSidebar() {
+    if (!lista || !totalEl) return;
+
+    lista.innerHTML = '';
+    let total = 0;
+
+    Object.entries(cart).forEach(([id, item]) => {
+      const subtotal = item.qty * item.preco;
+      total += subtotal;
+
+      lista.insertAdjacentHTML('beforeend', `
+        <div class="item-linha">
+          <button class="btn-menos" onclick="alterarQuantidade('${id}', -1)">−</button>
+          <strong>${item.nome}</strong> × ${item.qty} – R$ ${subtotal.toFixed(2).replace('.', ',')}
+          <button class="btn-mais"  onclick="alterarQuantidade('${id}', 1)">+</button>
+        </div>
+      `);
+    });
+
+    totalEl.textContent = `Total: R$ ${total.toFixed(2).replace('.', ',')}`;
+
+    const inputProdutos = document.getElementById('inputProdutos');
+    const inputTotal    = document.getElementById('inputTotal');
+    if (inputProdutos && inputTotal) {
+      const nomes = Object.values(cart).map(it => `${it.nome} x${it.qty}`);
+      inputProdutos.value = nomes.join(', ');
+      inputTotal.value    = total.toFixed(2);
+    }
+  }
+
+  window.alterarQuantidade = function (id, delta) {
+    fetch(`carrinho.php?acao=alterar&id=${encodeURIComponent(id)}&delta=${delta}`)
+      .then(res => res.json())
+      .then(data => {
+        cart = data.carrinho || {};
+        atualizarSidebar();
+      })
+      .catch(console.error);
+  };
+
+  carregarCarrinho().then(carrinhoDaSessao => {
+    cart = carrinhoDaSessao;
+    atualizarSidebar();
+  });
+
+  document.querySelectorAll('[data-id]').forEach(el => {
+    el.addEventListener('click', () => {
+      const id = el.getAttribute('data-id');
+
+      fetch(`get_produto.php?id=${id}`)
+        .then(r => r.json())
+        .then(prod => {
+          // Envia para carrinho.php para adicionar
+          const formData = new FormData();
+          formData.append('id', id);
+          formData.append('nome', prod.nome);
+          formData.append('preco', prod.preco_base || prod.preco);
+
+          fetch('carrinho.php?acao=adicionar', {
+            method: 'POST',
+            body: formData
+          })
+          .then(res => res.json())
+          .then(data => {
+            cart = data.carrinho || {};
+            atualizarSidebar();
+          })
+          .catch(console.error);
+        })
+        .catch(console.error);
+    });
+  });
+});
+
+</script>
+
+</body>
+</html>
