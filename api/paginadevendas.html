@@ -173,6 +173,13 @@
       margin: 0 auto;
       justify-content: flex-start; 
     }
+    .destaques-linha {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-left: 20px;
+  margin-top: 20px;
+}
   </style>
 </head>
 <body>
@@ -188,50 +195,52 @@
   </header>
 
   <main>
-    <h1 style="margin-left: 20px;">Escolha uma categoria</h1>
+<!-- Categoria: Título -->
+<h1 style="margin-left: 20px;">Escolha uma categoria</h1>
 
-    <div class="produto-card">
-      <h2>Cafeteria</h2>
-      <a href="cafeteria.html">
-        <img src="https://baggiocafe.com.br/cdn/shop/articles/Tipos_de_graos_de_cafe_1.jpg?v=1708516699&width=600" alt="Cafés">
-      </a>
-    </div>
+<!-- Produtos da categoria -->
+<div class="produto-card">
+  <h2>Cafeteria</h2>
+  <a href="cafeteria.html">
+    <img src="https://baggiocafe.com.br/cdn/shop/articles/Tipos_de_graos_de_cafe_1.jpg?v=1708516699&width=600" alt="Cafés">
+  </a>
+</div>
 
-    <div class="produto-card">
-      <h2>Biscoitos</h2>
-      <a href="bixcoito.html">
-        <img src="https://applicativa-marketplace-prod.s3.amazonaws.com/biscoitos-bolachas-juntos.jpg" alt="Biscoitos">
-      </a>
-    </div>
+<div class="produto-card">
+  <h2>Biscoitos</h2>
+  <a href="bixcoito.html">
+    <img src="https://applicativa-marketplace-prod.s3.amazonaws.com/biscoitos-bolachas-juntos.jpg" alt="Biscoitos">
+  </a>
+</div>
 
-    <div class="produto-card">
-      <h2>Doces</h2>
-      <a href="doce.html">
-        <img src="https://saborecia.com.br/wp-content/uploads/2020/08/MG_4421-scaled.jpg" alt="Doces">
-      </a>
-    </div>
+<div class="produto-card">
+  <h2>Doces</h2>
+  <a href="doce.html">
+    <img src="https://saborecia.com.br/wp-content/uploads/2020/08/MG_4421-scaled.jpg" alt="Doces">
+  </a>
+</div>
 
-    <section class="destaques">
-  <div>
-    <h1 style="margin-bottom: 30px;">Destaques:</h1>
-  </div>
+<!-- Destaques (título e produtos juntos) -->
+<div style="margin-left: 20px; margin-top: 60px;">
+  <h1>Destaques:</h1>
+</div>
 
-  <div class="produto">
+<div class="destaques-linha">
+  <div class="produto-card">
     <h2>Espresso</h2>
-    <img class="produto" data-id="4" src="https://jardinscafe.com/wp-content/uploads/2017/03/DSC_0373-scaled-e1592316203388-549x549.jpg" />
+    <img src="https://jardinscafe.com/wp-content/uploads/2017/03/DSC_0373-scaled-e1592316203388-549x549.jpg" />
   </div>
 
-  <div class="produto">
+  <div class="produto-card">
     <h2>Latte</h2>
-    <img class="produto" data-id="5" src="https://images.tcdn.com.br/img/editor/up/840963/Latte_Art_Xicara.jpg" />
+    <img src="https://images.tcdn.com.br/img/editor/up/840963/Latte_Art_Xicara.jpg" />
   </div>
 
-  <div class="produto">
+  <div class="produto-card">
     <h2>Cappuccino</h2>
-    <img class="produto" data-id="6" src="https://brainfoods.com.br/wp-content/uploads/2020/03/cappuccino.jpg" />
+    <img src="https://brainfoods.com.br/wp-content/uploads/2020/03/cappuccino.jpg" />
   </div>
-</section>
-  </main>
+</div>
 
   <!-- Sidebar com carrinho -->
   <div class="sidebar">
