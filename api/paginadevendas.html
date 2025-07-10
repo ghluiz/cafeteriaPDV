@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Cardápio - Cafeteria</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
   <style>
@@ -49,132 +49,83 @@
       background-color: var(--bread-and-butter);
       color: #607274;
       outline: none;
-      position: absolute;
-      right: 50%;
       font-size: large;
+      width: 200px;
     }
 
-    .sidebar {
-      background-color: #607274;
-      font-family: "inter", 'sans-serif';
-      color: white;
-      font-size: 15px;
+    /* Categorias */
+    .categorias {
       display: flex;
-      flex-direction: column;
-      height: 100%;
-      position: fixed;
-      right: 0;
-      top: 0;
-      border-top-left-radius: 100px;
-      border-bottom-left-radius: 100px;
-      width: 22%;
+      flex-wrap: wrap;
       justify-content: center;
+      gap: 30px;
       padding: 20px;
-    }
-
-    .linha1, .linha2 {
-      border: none;
-      height: 1px;
-      background-color: #FAEED1;
-      margin: 20px 0;
-      width: 100%;
-    }
-
-    #precoProduto {
-      font-size: large;
-      font-weight: bold;
-      margin-top: 10px;
-    }
-
-    #listaProdutos {
-      margin-top: 10px;
-      text-align: center;
-      font-size: large;
-    }
-
-    .continuar {
-      border: none;
-      border-radius: 8px;
-      background-color: #FAEED1;
-      color: #607274;
-      height: 40px;
-      font-size: medium;
-      width: 60%;
-      padding: 5px;
-      cursor: pointer;
-      margin-top: auto;
-      align-self: center;
-      justify-self: center;
-      margin-left: 45px;
-    }
-
-    .btn-mais, .btn-menos {
-      background-color: var(--castaway-lagoon);
-      color: var(--bread-and-butter);
-      border: none;
-      border-radius: 4px;
-      padding: 4px 10px;
-      font-size: large;
-      cursor: pointer;
-      transition: 0.2s ease;
+      margin-top: 20px;
     }
 
     .produto-card {
-      display: inline-block;
       width: 300px;
-      margin: 30px;
-      vertical-align: top;
       text-align: center;
+      cursor: pointer;
+      transition: transform 0.2s ease;
     }
-
+    .produto-card:hover {
+      transform: scale(1.05);
+    }
+    .produto-card h2 {
+      margin-bottom: 10px;
+      color: var(--castaway-lagoon);
+    }
     .produto-card img {
       width: 100%;
       height: 300px;
       object-fit: cover;
       border-radius: 10px;
       border: 2px solid var(--castaway-lagoon);
-      cursor: pointer;
     }
 
-    #nomeUser {
+    /* Destaques */
+    .destaques {
+      margin-top: 60px;
+      padding: 20px;
+    }
+
+    .titulo-destaques {
+      font-size: 32px;
+      color: var(--castaway-lagoon);
+      margin-left: 20px;
+      margin-bottom: 30px;
+    }
+
+    .produtos-destaques {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 30px;
+      padding: 0 20px;
+    }
+
+    .produto {
+      width: 280px;
       text-align: center;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+    .produto:hover {
+      transform: scale(1.05);
+    }
+    .produto h2 {
+      margin-bottom: 15px;
+      color: var(--castaway-lagoon);
     }
 
-   .destaques {
-  margin-top: 60px; /* Espaço depois das categorias */
-  padding: 20px;
-  background-color: var(--bread-and-butter);
-}
-
-.destaques-titulo {
-  text-align: left;
-  margin-left: 20px;
-  color: var(--castaway-lagoon);
-  font-size: 26px;
-  margin-bottom: 20px;
-}
-
-.destaques-container {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  gap: 30px;
-  padding: 0 20px;
-}
-
-.produto-destaque {
-  width: 280px;
-  text-align: center;
-}
-
-.produto-destaque img {
-  width: 100%;
-  height: 280px;
-  object-fit: cover;
-  border-radius: 10px;
-  border: 2px solid var(--castaway-lagoon);
-  cursor: pointer;
-}
+    .imagem-produto {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      border-radius: 10px;
+      border: 2px solid var(--castaway-lagoon);
+    }
   </style>
 </head>
 <body>
@@ -189,9 +140,9 @@
     </div>
   </header>
 
-  <main>
-    <h1 style="margin-left: 20px;">Escolha uma categoria</h1>
+  <h1 style="margin-left: 20px;">Escolha uma categoria</h1>
 
+  <section class="categorias">
     <div class="produto-card">
       <h2>Cafeteria</h2>
       <a href="cafeteria.html">
@@ -212,30 +163,25 @@
         <img src="https://saborecia.com.br/wp-content/uploads/2020/08/MG_4421-scaled.jpg" alt="Doces">
       </a>
     </div>
-<section class="destaques">
-  <h1 class="destaques-titulo">Destaques</h1>
-  <div class="destaques-container">
-    <div class="produto-destaque">
-      <h2>Espresso</h2>
-      <img class="produto" data-id="4"
-        src="https://jardinscafe.com/wp-content/uploads/2017/03/DSC_0373-scaled-e1592316203388-549x549.jpg"
-        alt="Espresso">
+  </section>
+
+  <section class="destaques">
+    <h1 class="titulo-destaques">Destaques</h1>
+    <div class="produtos-destaques">
+      <div class="produto">
+        <h2>Espresso</h2>
+        <img class="imagem-produto" data-id="4" src="https://jardinscafe.com/wp-content/uploads/2017/03/DSC_0373-scaled-e1592316203388-549x549.jpg" alt="Espresso">
+      </div>
+      <div class="produto">
+        <h2>Latte</h2>
+        <img class="imagem-produto" data-id="5" src="https://images.tcdn.com.br/img/editor/up/840963/Latte_Art_Xicara.jpg" alt="Latte">
+      </div>
+      <div class="produto">
+        <h2>Cappuccino</h2>
+        <img class="imagem-produto" data-id="6" src="https://brainfoods.com.br/wp-content/uploads/2020/03/cappuccino.jpg" alt="Cappuccino">
+      </div>
     </div>
-    <div class="produto-destaque">
-      <h2>Latte</h2>
-      <img class="produto" data-id="5"
-        src="https://images.tcdn.com.br/img/editor/up/840963/Latte_Art_Xicara.jpg"
-        alt="Latte">
-    </div>
-    <div class="produto-destaque">
-      <h2>Cappuccino</h2>
-      <img class="produto" data-id="6"
-        src="https://brainfoods.com.br/wp-content/uploads/2020/03/cappuccino.jpg"
-        alt="Cappuccino">
-    </div>
-  </div>
-</section>
-  </main>
+  </section>
 </body>
 </html>
 
