@@ -56,7 +56,7 @@
 
     .sidebar {
       background-color: #607274;
-      font-family: "Inter", 'sans-serif';
+      font-family: "inter", 'sans-serif';
       color: white;
       font-size: 15px;
       display: flex;
@@ -70,7 +70,6 @@
       width: 22%;
       justify-content: center;
       padding: 20px;
-      box-sizing: border-box;
     }
 
     .linha1, .linha2 {
@@ -141,21 +140,22 @@
       text-align: center;
     }
 
-    /* Ajuste da seção destaques */
+    /* Aqui o ajuste que você pediu: Destaques um pouco mais abaixo e espaçados */
+
     .destaques {
-      margin-top: 50px;
-      padding: 40px 20px;
+      margin-top: 60px; /* desceu um pouco */
+      padding: 20px 20px 60px 20px;
       display: flex;
       justify-content: center;
-      gap: 60px;
-      flex-wrap: wrap;
-      box-sizing: border-box;
+      gap: 40px; /* espaço agradável entre as imagens */
+      flex-wrap: wrap; /* para melhor responsividade, as imagens quebram linha se preciso */
     }
 
     .destaques h1 {
-      text-align: center;
       width: 100%;
-      margin-bottom: 20px;
+      text-align: center;
+      margin-bottom: 30px; /* espaço entre o título e as imagens */
+      font-size: 2rem;
       color: var(--castaway-lagoon);
     }
 
@@ -169,8 +169,10 @@
       border: 2px solid var(--castaway-lagoon);
       width: 300px;
       height: 300px;
-      cursor: pointer;
       object-fit: cover;
+      cursor: pointer;
+      display: block;
+      margin: 0 auto;
     }
   </style>
 </head>
@@ -186,33 +188,33 @@
     </div>
   </header>
 
-  <main style="margin-right: 22%;">
+  <main>
     <h1 style="margin-left: 20px;">Escolha uma categoria</h1>
 
     <div class="produto-card">
       <h2>Cafeteria</h2>
       <a href="cafeteria.html">
-        <img src="https://baggiocafe.com.br/cdn/shop/articles/Tipos_de_graos_de_cafe_1.jpg?v=1708516699&width=600" alt="Cafés" />
+        <img src="https://baggiocafe.com.br/cdn/shop/articles/Tipos_de_graos_de_cafe_1.jpg?v=1708516699&width=600" alt="Cafés">
       </a>
     </div>
 
     <div class="produto-card">
       <h2>Biscoitos</h2>
       <a href="bixcoito.html">
-        <img src="https://applicativa-marketplace-prod.s3.amazonaws.com/biscoitos-bolachas-juntos.jpg" alt="Biscoitos" />
+        <img src="https://applicativa-marketplace-prod.s3.amazonaws.com/biscoitos-bolachas-juntos.jpg" alt="Biscoitos">
       </a>
     </div>
 
     <div class="produto-card">
       <h2>Doces</h2>
       <a href="doce.html">
-        <img src="https://saborecia.com.br/wp-content/uploads/2020/08/MG_4421-scaled.jpg" alt="Doces" />
+        <img src="https://saborecia.com.br/wp-content/uploads/2020/08/MG_4421-scaled.jpg" alt="Doces">
       </a>
     </div>
 
     <section class="destaques">
       <h1>Destaques:</h1>
-      
+
       <div class="produto">
         <h2>Espresso</h2>
         <img class="produto" data-id="4" src="https://jardinscafe.com/wp-content/uploads/2017/03/DSC_0373-scaled-e1592316203388-549x549.jpg" />
@@ -239,11 +241,13 @@
     <h3 id="precoProduto">Total: R$ 0,00</h3>
 
     <form id="formFinalizar" action="fig11.php" method="POST">
-      <input type="hidden" name="nome" id="inputProdutos" />
-      <input type="hidden" name="total" id="inputTotal" />
+      <input type="hidden" name="nome" id="inputProdutos">
+      <input type="hidden" name="total" id="inputTotal">
       <button type="submit" class="continuar">CONTINUAR</button>
     </form>
   </div>
+</body>
+</html>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
